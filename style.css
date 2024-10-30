@@ -1,0 +1,25 @@
+  /* מיכל ההקלדה */
+  .typewriter-container {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    text-align: right;
+    direction: rtl;
+    color: #f3ba24;
+    font-size: 3rem;
+}
+
+/* חלק המתחלף */
+.dynamic-text {
+    display: inline-block;
+    width: 360px; /* קבע רוחב לפי הטקסט הארוך ביותר */
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* אפקט הבהוב הסמן */
+@keyframes caret-blink {
+    50% {
+        opacity: 0;
+    }
+}

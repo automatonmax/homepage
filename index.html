@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="x1kIgw5fgMlJXgdgI__koxR3ssdReKjfogCqRByTGkA" />
-    <meta name="description" content="אתר אוטומקס -automax שיעזרו לך להבין איך לקדם את העסק שלך , CRM, אוטמציות, צאטבוטים באמצעות הבינה המלאכותית, ליוי אישי">
     <meta name="keywords" content="אוטומציה, אוטומציה עיסקית, אוטומקס, מקסימום אוטומציה, CRM,צאט בוט,">
     <meta name="author" content="חנה מילר">
-   <title>אוטומקס - אוטומציה עסקית</title>
+    <title>אוטומקס - אוטומציה עסקית</title>
     <link rel="icon" href="favicon.svg" type="image/svg">
     <link rel="shortcut icon" href="favicon.svg" type="image/svg">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="script" href="./script.js">
    <style>
         /* הגדרות בסיסיות */
         body {
@@ -156,23 +156,10 @@
         }
 
         
-/*אפקט הקלדה*/
-/* סגנון בסיסי לכותרת */
-.typewriter {
-color: #d48806; /* צבע הטקסט */
-overflow: hidden; /* מסתיר את הטקסט מעבר לרוחב */
-white-space: nowrap; /* מונע גלישה לשורות נוסx*/
-animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite; /* שילוב של שתי אנימציות */
-text-align: center; /* ממרכז את הכותרת */
-direction: rtl; /* מתחיל את האפקט משמאל לימין */
-margin: 0 auto; /* ממרכז את האלמנט */
-width: fit-content;
-}
-
-/* אנימציה לכתיבה */
-@keyframes typing {
-from { width: 0; }
-to { width: 100%; }
+/*h1 מוסתר , קיים בשביל גוגל*/
+.caption {
+color: #000000; /* צבע הטקסט */
+font-size: 2px; 
 }
 
   /* עיצוב SVG */
@@ -202,6 +189,9 @@ transform: translateY(-10px); /* באמצע האנימציה - עולה למעל
     </style>
 </head>
 <body dir="rtl">
+
+   
+
     <div class="header-section"></div>
     <div class="container">
          
@@ -221,8 +211,18 @@ transform: translateY(-10px); /* באמצע האנימציה - עולה למעל
     </g>
     
     </svg>
+
+    
          </div>
-            <h1 class="typewriter">אוטומקס - אוטומציה עסקית</h1>
+<br/>
+           <!-- כותרת עם המילים המתחלפות -->
+     <div class="typewriter-container">
+        <span>אוטומקס - </span>
+        <span class="dynamic-text" id="dynamic-text"></span>
+    </div>
+
+  
+            <h1 class="caption">אוטומקס - אוטומציה עסקית</h1>
             <h2>הפכו תהליכים ידניים לאוטומטיים, חסכו בזמן ומשאבים והובילו את העסק שלכם לשיאים חדשים.</h2>
          
             <!-- קטע 'מה אנחנו מציעים' -->
@@ -230,6 +230,7 @@ transform: translateY(-10px); /* באמצע האנימציה - עולה למעל
             <h3 class="section-title">מה אנחנו מציעים?</h3>
             <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
                 <div class="card">דפי נחיתה, ניהול לידים</div>
+               
                 <div class="card">מערכות crm</div>
                 <div class="card">אוטומציות בהתאמה אישית</div>
                 <div class="card">דיוור אוטומטי</div>
@@ -250,10 +251,10 @@ transform: translateY(-10px); /* באמצע האנימציה - עולה למעל
         <div class="text-content">
             <h3 class="section-title">למה לבחור בנו?</h3>
             <ul>
-                <li>שירות מותאם אישית - ליווי לאורך כל התהליך משלב התכנון ועד התמיכה.</li>
-                <li>שקיפות ואמינות - עדכונים מלאים על התקדמות, בכל שלב.</li>
-                <li>חיסכון בזמן ובעלויות - פחות התעסקות במשימות חוזרות.</li>
-                <li>שיפור חוויית לקוח - זרימת עבודה חלקה למענה מהיר ומקצועי.</li>
+                <li>שירות מותאם אישית.</li>
+                <li>שקיפות ואמינות.</li>
+                <li>חיסכון בזמן ובעלויות.</li>
+                <li>שיפור חוויית לקוח.</li>
             </ul>
         </div>
 <!-- Contact Section -->
@@ -271,5 +272,41 @@ transform: translateY(-10px); /* באמצע האנימציה - עולה למעל
         </p>
         </div>
     </footer>
+
+    <script>
+        const element = document.getElementById("dynamic-text");
+        const textArray = ["מקסימום אוטומציה", "אוטומציה עסקית"];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function type() {
+            const currentText = textArray[textIndex];
+            if (isDeleting) {
+                // מחיקת האותיות האחרונות בטקסט
+                element.innerHTML = currentText.substring(0, charIndex - 1) + '<span class="caret">|</span>';
+                charIndex--;
+                typingSpeed = 50;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % textArray.length;
+                }
+            } else {
+                // הוספת אותיות לטקסט
+                element.innerHTML = currentText.substring(0, charIndex + 1) + '<span class="caret">|</span>';
+                charIndex++;
+                typingSpeed = 150;
+                if (charIndex === currentText.length) {
+                    isDeleting = true;
+                    typingSpeed = 1000; // השהייה קצרה לפני מחיקה
+                }
+            }
+            setTimeout(type, typingSpeed);
+        }
+
+        // התחלת האנימציה
+        type();
+    </script>
 </body>
 </html>
