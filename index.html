@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אוטומקס - אוטומציה עסקית</title>
+    <link rel="icon" href="favicon.svg" type="image/svg">
+    <link rel="shortcut icon" href="favicon.svg" type="image/svg">
+   <style>
+        /* הגדרות בסיסיות */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 26px;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        /* עיצוב הקונטיינר הראשי */
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        /* כותרת ראשית */
+        h1 {
+            color: #f78e5a;
+            margin-bottom: 20px;
+        }
+        
+        /* תת-כותרת */
+        h2 {
+            color: #89e86c;
+            margin-bottom: 30px;
+        }
+        .header-section{
+            height: 50vh;
+            width: 100vw;
+            background-image: url('./רובוטים.jpg'); /* הוספת תמונה לרקע */
+            background-size: cover; /* מתאם את התמונה לגובה ורוחב של הקטע */
+            background-position: center; /* ממקם את התמונה במרכז */
+        }
+        /* כותרות קטעים */
+        .section-title {
+            color: #f6656b;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f78e5a;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        
+        /* עיצוב טקסט */
+        .text-content {
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        /* רשימה בתוך קטע השירותים */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            color: #ffffff;
+        }
+
+        ul li::before {
+            content: "✓";
+            color: #91e76f;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-left: 5px;
+
+        }
+        
+        /* כפתור קריאה לפעולה */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #89e86c, #f6656b, #f78e5a);
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #f6656b;
+            transform: scale(1.05);
+        }
+
+        /* התאמה לנייד */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.2rem; }
+            .section-title { font-size: 1.5rem; }
+        }
+
+
+        /* עיצוב כרטיסים */
+        .card {
+            width: 40%;
+            height: 100px;
+            border: 2px solid #91e76f;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            transition: transform 0.3s ease, background 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            justify-content: center; /* מרכז אופקית */
+            align-items: center; /* מרכז אנכית */
+            height: 100px; /* גובה לדוגמה */
+        }
+
+        /* אנימציה של מעבר עכבר */
+        .card:hover {
+            transform: scale(1.05);
+            background: linear-gradient(90deg, #89e86c, #f6656b, #f78e5a);
+            color: #ffffff;
+        }
+
+        /* כפתור קריאה לפעולה */
+        .cta-button {
+            display: inline-block;
+            background-color: #89e86c;
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #f6656b;
+            transform: scale(1.05);
+        }
+
+        
+/*אפקט הקלדה*/
+/* סגנון בסיסי לכותרת */
+.typewriter {
+color: #d48806; /* צבע הטקסט */
+overflow: hidden; /* מסתיר את הטקסט מעבר לרוחב */
+white-space: nowrap; /* מונע גלישה לשורות נוסx*/
+animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite; /* שילוב של שתי אנימציות */
+text-align: center; /* ממרכז את הכותרת */
+direction: rtl; /* מתחיל את האפקט משמאל לימין */
+margin: 0 auto; /* ממרכז את האלמנט */
+width: fit-content;
+}
+
+/* אנימציה לכתיבה */
+@keyframes typing {
+from { width: 0; }
+to { width: 100%; }
+}
+
+  /* עיצוב SVG */
+  .icon-container {
+width: 64px;
+height: 64px;
+display: inline-block;
+animation: bounce 2s ease-in-out infinite;;
+}
+
+/*SVG הגדרת הנפשה */
+@keyframes bounce {
+0%, 100% { 
+transform: translateY(0); /* מצב התחלתי וסופי - במיקום המקורי */
+}
+50% { 
+transform: translateY(-10px); /* באמצע האנימציה - עולה למעלה */
+}
+}
+
+        /* התאמה לנייד */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.2rem; }
+            .section-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <div class="header-section"></div>
+    <div class="container">
+         
+
+        
+        <!-- כותרת הדף -->
+                    <!-- אייקון SVG עם קוד ההנפשה -->
+<div class="icon-container">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier"> 
+            <path d="M13.2929 8.70711L8 3.41421L2.70711 8.7071L1.29289 7.29289L8 0.585785L14.7071 7.29289L13.2929 8.70711Z" fill="#000000"></path> <path d="M13.2929 15.2071L8 9.91421L2.70711 15.2071L1.29289 13.7929L8 7.08578L14.7071 13.7929L13.2929 15.2071Z" fill="white">
+
+        </path> 
+        
+    </g>
+    
+    </svg>
+         </div>
+            <h1 class="typewriter">אוטומקס - אוטומציה עסקית</h1>
+            <h2>הפכו תהליכים ידניים לאוטומטיים, חסכו בזמן ומשאבים והובילו את העסק שלכם לשיאים חדשים.</h2>
+         
+            <!-- קטע 'מה אנחנו מציעים' -->
+        <div>
+            <h3 class="section-title">מה אנחנו מציעים?</h3>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div class="card">דפי נחיתה, ניהול לידים</div>
+                <div class="card">צאט בוטים</div>
+                <div class="card">מערכות crm</div>
+                <div class="card">אוטומציות בהתאמנ אישית</div>
+                <div class="card">דיוור אוטומטי</div>
+            </div>
+        </div>
+
+        <!-- קטע 'מי אנחנו' -->
+        <div class="text-content">
+            <h3 class="section-title">קצת עלינו</h3>
+            <p>אנחנו מתמחים בהפיכת תהליכים עסקיים לאוטומטיים. החזון שלנו הוא ליצור עבור כל עסק תהליכי עבודה חכמים וזורמים יותר, שמאפשרים למנהלים ולעובדים להתמקד במטרות הגדולות באמת, ולא במשימות חוזרות ומתישות.</p>
+        </div>
+
+       
+ <!-- קריאה לפעולה -->
+ <a href="#contact" class="cta-button">צרו איתנו קשר, נשמח לייעץ לכם!</a>
+  
+        <!-- קטע 'למה לבחור בנו?' -->
+        <div class="text-content">
+            <h3 class="section-title">למה לבחור בנו?</h3>
+            <ul>
+                <li>שירות מותאם אישית - ליווי לאורך כל התהליך משלב התכנון ועד התמיכה.</li>
+                <li>שקיפות ואמינות - עדכונים מלאים על התקדמות, בכל שלב.</li>
+                <li>חיסכון בזמן ובעלויות - פחות התעסקות במשימות חוזרות.</li>
+                <li>שיפור חוויית לקוח - זרימת עבודה חלקה למענה מהיר ומקצועי.</li>
+            </ul>
+        </div>
+<!-- Contact Section -->
+<section id="contact">
+    <div class = "section-content">
+    <h2>השאירו את פרטיכם לקבלת ייעוץ והצעת מחיר</h2>
+    <div style="width:100%;height:500px;" data-fillout-id="gtx8hQST4yus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div><script src="https://server.fillout.com/embed/v1/"></script></section>
+         </div>
+
+       <!-- Footer Section -->
+       <footer>
+        <div class = "section-content">
+        <p>© כל הזכויות שמורות - 
+            <a>אוטומקס</a>
+        </p>
+        </div>
+    </footer>
+</body>
+</html>
