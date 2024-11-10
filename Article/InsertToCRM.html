@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="אוטומציה, אוטומציה עיסקית, אוטומקס, מקסימום אוטומציה, CRM,צאט בוט,מאמרים על אוטומציה עיסקית,טיפים לניהול עסק,">
+    <meta name="author" content="חנה מילר">
+    <title>אוטומקס - אוטומציה עסקית</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg">
+    <link rel="shortcut icon" href="favicon.svg" type="image/svg">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="script" href="./script.js">
+    <style>
+        /* עיצוב כללי */
+        body {
+            background-color: #fff;
+            color: #333;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            direction: rtl;
+            align-items: start;
+            font-size: 20px;
+        }
+        
+        /* עיצוב כותרות */
+        h1 {
+            color: #2E8B57; /* ירוק כהה */
+            font-size: 2em;
+            border-bottom: 2px solid #2E8B57;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #FF8C00; /* כתום */
+            font-size: 1.8em;
+            margin-top: 20px;
+        }
+        
+        h3 {
+            color: #DC143C; /* אדום כהה */
+            font-size: 1.4em;
+            margin-top: 15px;
+        }
+        
+        /* עיצוב פסקאות */
+        p {
+            margin: 10px 0;
+        }
+
+        /* עיצוב רשימות */
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        /* עיצוב קישורים */
+        a {
+            color: #2E8B57;
+            text-decoration: underline;
+        }
+
+        /* עיצוב כפתור */
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #FF8C00;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #DC143C;
+        }
+
+        ul li {
+    display: flow;
+    align-items: baseline;
+    margin: 10px 0;
+    color: #d32840;
+}
+
+.article{
+margin: auto;
+max-width: 1000px;
+}
+    </style>
+</head>
+<body dir="rtl">
+    <script>
+        const element = document.getElementById("dynamic-text");
+        const textArray = ["מקסימום אוטומציה", "אוטומציה עסקית"];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function type() {
+            const currentText = textArray[textIndex];
+            if (isDeleting) {
+                // מחיקת האותיות האחרונות בטקסט
+                element.innerHTML = currentText.substring(0, charIndex - 1) + '<span class="caret">|</span>';
+                charIndex--;
+                typingSpeed = 50;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % textArray.length;
+                }
+            } else {
+                // הוספת אותיות לטקסט
+                element.innerHTML = currentText.substring(0, charIndex + 1) + '<span class="caret">|</span>';
+                charIndex++;
+                typingSpeed = 150;
+                if (charIndex === currentText.length) {
+                    isDeleting = true;
+                    typingSpeed = 1000; // השהייה קצרה לפני מחיקה
+                }
+            }
+            setTimeout(type, typingSpeed);
+        }
+
+        // התחלת האנימציה
+        type();
+
+
+        function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('show'); // מציג/מסתיר את התפריט
+}
+
+// סגירת התפריט בלחיצה מחוץ לתפריט
+document.addEventListener('click', function(event) {
+    const navbar = document.querySelector('.navbar');
+    
+
+    // בודק שההקלקה היא מחוץ לתפריט
+    if (!navbar.contains(event.target)) {
+        menu.classList.remove('show'); // הסתרת התפריט
+    }
+});;
+    </script>
+
+   
+
+    <div class="header-section"></div>
+    <nav class="navbar" onclick="toggleMenu()">
+        <button class="menu-toggle">☰</button> <!-- כפתור לפתיחה -->
+        <ul class="menu">
+            <li class="close-btn"><a href="javascript:void(0);" onclick="toggleMenu()">✖</a></li> <!-- כפתור סגירה "X" -->
+            <li><a href="../index.html"> <span class="menu-icon">✓</span><span>עלינו</span></a></li>
+            <li><a href="../index.html#services"><span class="menu-icon">✓</span><span>שירותים</span> </a></li>
+            <li><a href="../index.html#contact"><span class="menu-icon">✓</span><span>צור קשר</span> </a></li>
+            <li><a href="./ArticleList.html"><span class="menu-icon">✓</span><span>מאמרים</span> </a></li>
+           </ul>
+    </nav> 
+
+    <div class="article">
+
+        <h1>מדריך הכנסת ליד למערכת CRM באמצעות MAKE (Integromat)</h1>
+    
+        <p>הכנסת לידים למערכת CRM בצורה אוטומטית יכולה לשפר את זרימת העבודה שלך ולחסוך זמן יקר. באמצעות MAKE, מערכת אוטומציה קלה לשימוש, ניתן להגדיר תהליך שבו לידים מדפי נחיתה, מיילים או מערכות אחרות נכנסים למערכת ה-CRM שלך בצורה אוטומטית וללא מגע יד אדם.</p>
+    
+        <h2>שלב 1: התחברות ל-MAKE ויצירת תרחיש חדש</h2>
+    
+        <p>לאחר הכניסה לחשבון ה-MAKE שלך, לחץ על כפתור "Create a new scenario" (יצירת תרחיש חדש). תרחיש זה יאפשר לך להגדיר את כל שלבי האוטומציה ליצירת לידים חדשים במערכת ה-CRM.</p>
+    
+        <p>עליך לוודא שיש לך חיבור לכל הכלים הרלוונטיים כמו דף הנחיתה, מערכת המייל, וה-CRM שלך.</p>
+    
+        <h2>שלב 2: הגדרת מקור הלידים</h2>
+    
+        <p>השלב הבא הוא להגדיר את המקור שממנו יגיעו הלידים. יש כמה אפשרויות פופולריות:</p>
+        <ul>
+            <li><strong>טופס בדף נחיתה:</strong> אם הלידים נכנסים דרך טופס בדף נחיתה, תוכל לחבר את הטופס ל-MAKE כדי לאסוף את הנתונים.</li>
+            <li><strong>Google Sheets:</strong> אם המידע על הלידים נשמר בגיליון אלקטרוני, בחר את Google Sheets כמקור.</li>
+            <li><strong>מערכת דיוור:</strong> אם הלידים מגיעים דרך מערכת דיוור, כמו Smoove או Mailchimp, אפשר להתחבר למערכות אלו ולהגדיר את הטריגרים במערכת.</li>
+        </ul>
+    
+        <p>לאחר מכן, בחר את הפלטפורמה הרלוונטית בתרחיש והגדר את הנתונים שנכנסים.</p>
+    
+        <h2>שלב 3: עיבוד המידע והכנתו להזנה ל-CRM</h2>
+    
+        <p>MAKE מאפשרת לעבד את המידע כך שיתאים ל-CRM. לדוגמה:</p>
+        <ul>
+            <li>חיבור שם פרטי ושם משפחה לשדה מלא.</li>
+            <li>המרת תאריך לפורמט תואם.</li>
+            <li>בדיקה האם הליד כבר קיים במערכת כדי להימנע מכפילויות.</li>
+        </ul>
+        <p>כללי עיבוד נתונים אלה יעזרו להבטיח שהמידע מגיע למערכת ה-CRM בצורה תקינה ומסודרת.</p>
+    
+        <h2>שלב 4: חיבור ל-CRM והגדרת יצירת ליד חדש</h2>
+    
+        <p>כעת, חבר את MAKE למערכת ה-CRM שלך. מערכות CRM פופולריות כמו HubSpot, Zoho, ו-Salesforce נתמכות על ידי MAKE. בחר את הפעולה של "יצירת ליד חדש" או "עדכון ליד קיים".</p>
+    
+        <p>לאחר בחירת הפעולה המתאימה, יש להתאים את שדות המידע למבנה ה-CRM. תהליך זה כולל חיבור שדות כמו שם, טלפון, דוא"ל, מקור הליד וכו'.</p>
+    
+        <h2>שלב 5: בדיקות ואימות</h2>
+    
+        <p>לפני הפעלה מלאה של התרחיש, חשוב לבצע בדיקות. MAKE מאפשרת להריץ בדיקות על התרחיש כדי לוודא שהלידים נכנסים בצורה תקינה למערכת ה-CRM. כך תוכל לבדוק שהמיילים מגיעים נכון, שהשדות מתאימים, ושאין שגיאות.</p>
+    
+        <h2>שלב 6: הפעלת האוטומציה</h2>
+    
+        <p>לאחר אישור שהכל עובד בצורה תקינה, יש להפעיל את התרחיש כדי שיהיה פעיל. מעתה, כל ליד חדש שייכנס דרך המקור שהגדרת יעבור אוטומטית למערכת ה-CRM שלך, ויתועד במערכת בצורה מסודרת.</p>
+    
+        <h2>טיפים לשיפור האוטומציה</h2>
+    
+        <p>שימוש באוטומציה יכול להפוך את תהליך ניהול הלידים להרבה יותר יעיל. הנה כמה טיפים:</p>
+        <ul>
+            <li><strong>תזמון:</strong> וודא שהתרחיש שלך מופעל בזמן המתאים, כמו כל פעם שיש ליד חדש.</li>
+            <li><strong>ניטור ובקרה:</strong> הגדר התראות במערכת על שגיאות אפשריות כדי שתוכל לפעול במהירות.</li>
+            <li><strong>שיפור מתמשך:</strong> בצע מעקב תקופתי כדי לבחון אם ניתן לשפר את התהליך, ולהוסיף שלבים לפי הצורך.</li>
+        </ul>
+    
+    </div>
+</body>
+</html>
